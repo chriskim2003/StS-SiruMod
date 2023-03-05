@@ -40,7 +40,12 @@ public class SiruBasicRelic extends CustomRelic {
 
     @Override
     public void onPlayerEndTurn() {
-        AbstractDungeon.player.discardPile.addToTop(CardLibrary.getCard(Dazed.ID));
+        AbstractDungeon.player.discardPile.addToBottom(CardLibrary.getCard(Dazed.ID));
+    }
+
+    @Override
+    public String getUpdatedDescription() {
+        return DESCRIPTIONS[0];
     }
 
     @Override

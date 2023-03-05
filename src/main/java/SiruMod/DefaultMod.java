@@ -42,34 +42,6 @@ import java.util.Properties;
 
 import static basemod.BaseMod.loadCustomStringsFile;
 
-//TODO: DON'T MASS RENAME/REFACTOR
-//TODO: DON'T MASS RENAME/REFACTOR
-//TODO: DON'T MASS RENAME/REFACTOR
-//TODO: DON'T MASS RENAME/REFACTOR
-// Please don't just mass replace "theDefault" with "yourMod" everywhere.
-// It'll be a bigger pain for you. You only need to replace it in 4 places.
-// I comment those places below, under the place where you set your ID.
-
-//TODO: FIRST THINGS FIRST: RENAME YOUR PACKAGE AND ID NAMES FIRST-THING!!!
-// Right click the package (Open the project pane on the left. Folder with black dot on it. The name's at the very top) -> Refactor -> Rename, and name it whatever you wanna call your mod.
-// Scroll down in this file. Change the ID from "theDefault:" to "yourModName:" or whatever your heart desires (don't use spaces). Dw, you'll see it.
-// In the JSON strings (resources>localization>eng>[all them files] make sure they all go "yourModName:" rather than "theDefault", and change to "yourmodname" rather than "thedefault".
-// You can ctrl+R to replace in 1 file, or ctrl+shift+r to mass replace in specific files/directories, and press alt+c to make the replace case sensitive (Be careful.).
-// Start with the DefaultCommon cards - they are the most commented cards since I don't feel it's necessary to put identical comments on every card.
-// After you sorta get the hang of how to make cards, check out the card template which will make your life easier
-
-/*
- * With that out of the way:
- * Welcome to this super over-commented Slay the Spire modding base.
- * Use it to make your own mod of any type. - If you want to add any standard in-game content (character,
- * cards, relics), this is a good starting point.
- * It features 1 character with a minimal set of things: 1 card of each type, 1 debuff, couple of relics, etc.
- * If you're new to modding, you basically *need* the BaseMod wiki for whatever you wish to add
- * https://github.com/daviscook477/BaseMod/wiki - work your way through with this base.
- * Feel free to use this in any way you like, of course. MIT licence applies. Happy modding!
- *
- * And pls. Read the comments.
- */
 
 @SpireInitializer
 public class DefaultMod implements
@@ -77,8 +49,7 @@ public class DefaultMod implements
         EditStringsSubscriber,
         PostDungeonInitializeSubscriber,
         PostInitializeSubscriber {
-    // Make sure to implement the subscribers *you* are using (read basemod wiki). Editing cards? EditCardsSubscriber.
-    // Making relics? EditRelicsSubscriber. etc., etc., for a full list and how to make your own, visit the basemod wiki.
+
     public static final Logger logger = LogManager.getLogger(DefaultMod.class.getName());
     private static String modID;
 
@@ -91,122 +62,19 @@ public class DefaultMod implements
     private static final String MODNAME = "SiruMod";
     private static final String AUTHOR = "SiruDev"; // And pretty soon - You!
     private static final String DESCRIPTION = "Trash game";
-    
-    // =============== INPUT TEXTURE LOCATION =================
-    
-    // Colors (RGB)
-    // Character Color
-    public static final Color DEFAULT_GRAY = CardHelper.getColor(64.0f, 70.0f, 70.0f);
-    
-    // Potion Colors in RGB
-    public static final Color PLACEHOLDER_POTION_LIQUID = CardHelper.getColor(209.0f, 53.0f, 18.0f); // Orange-ish Red
-    public static final Color PLACEHOLDER_POTION_HYBRID = CardHelper.getColor(255.0f, 230.0f, 230.0f); // Near White
-    public static final Color PLACEHOLDER_POTION_SPOTS = CardHelper.getColor(100.0f, 25.0f, 10.0f); // Super Dark Red/Brown
-    
-    // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
-    // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
-    // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
-    // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
-    // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
-    // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
-  
-    // Card backgrounds - The actual rectangular card.
-    private static final String ATTACK_DEFAULT_GRAY = "SiruModResources/images/512/bg_attack_default_gray.png";
-    private static final String SKILL_DEFAULT_GRAY = "SiruModResources/images/512/bg_skill_default_gray.png";
-    private static final String POWER_DEFAULT_GRAY = "SiruModResources/images/512/bg_power_default_gray.png";
-    
-    private static final String ENERGY_ORB_DEFAULT_GRAY = "SiruModResources/images/512/card_default_gray_orb.png";
-    private static final String CARD_ENERGY_ORB = "SiruModResources/images/512/card_small_orb.png";
-    
-    private static final String ATTACK_DEFAULT_GRAY_PORTRAIT = "SiruModResources/images/1024/bg_attack_default_gray.png";
-    private static final String SKILL_DEFAULT_GRAY_PORTRAIT = "SiruModResources/images/1024/bg_skill_default_gray.png";
-    private static final String POWER_DEFAULT_GRAY_PORTRAIT = "SiruModResources/images/1024/bg_power_default_gray.png";
-    private static final String ENERGY_ORB_DEFAULT_GRAY_PORTRAIT = "SiruModResources/images/1024/card_default_gray_orb.png";
-    
-    // Character assets
-    private static final String THE_DEFAULT_BUTTON = "SiruModResources/images/charSelect/DefaultCharacterButton.png";
-    private static final String THE_DEFAULT_PORTRAIT = "SiruModResources/images/charSelect/DefaultCharacterPortraitBG.png";
-    public static final String THE_DEFAULT_SHOULDER_1 = "SiruModResources/images/char/defaultCharacter/shoulder.png";
-    public static final String THE_DEFAULT_SHOULDER_2 = "SiruModResources/images/char/defaultCharacter/shoulder2.png";
-    public static final String THE_DEFAULT_CORPSE = "SiruModResources/images/char/defaultCharacter/corpse.png";
-    
+
     //Mod Badge - A small icon that appears in the mod settings menu next to your mod.
     public static final String BADGE_IMAGE = "SiruModResources/images/Badge.png";
     
-    // Atlas and JSON files for the Animations
-    public static final String THE_DEFAULT_SKELETON_ATLAS = "SiruModResources/images/char/defaultCharacter/skeleton.atlas";
-    public static final String THE_DEFAULT_SKELETON_JSON = "SiruModResources/images/char/defaultCharacter/skeleton.json";
-    
-    // =============== MAKE IMAGE PATHS =================
-    
-    public static String makeCardPath(String resourcePath) {
-        return getModID() + "Resources/images/cards/" + resourcePath;
-    }
-    
-    public static String makeRelicPath(String resourcePath) {
-        return getModID() + "Resources/images/relics/" + resourcePath;
-    }
-    
-    public static String makeRelicOutlinePath(String resourcePath) {
-        return getModID() + "Resources/images/relics/outline/" + resourcePath;
-    }
-    
-    public static String makeOrbPath(String resourcePath) {
-        return getModID() + "Resources/images/orbs/" + resourcePath;
-    }
-    
-    public static String makePowerPath(String resourcePath) {
-        return getModID() + "Resources/images/powers/" + resourcePath;
-    }
-    
-    public static String makeEventPath(String resourcePath) {
-        return getModID() + "Resources/images/events/" + resourcePath;
-    }
-    
-    // =============== /MAKE IMAGE PATHS/ =================
-    
-    // =============== /INPUT TEXTURE LOCATION/ =================
-    
-    
-    // =============== SUBSCRIBE, CREATE THE COLOR_GRAY, INITIALIZE =================
+
     
     public DefaultMod() {
         logger.info("Subscribe to BaseMod hooks");
         
         BaseMod.subscribe(this);
-        
-      /*
-           (   ( /(  (     ( /( (            (  `   ( /( )\ )    )\ ))\ )
-           )\  )\()) )\    )\()))\ )   (     )\))(  )\()|()/(   (()/(()/(
-         (((_)((_)((((_)( ((_)\(()/(   )\   ((_)()\((_)\ /(_))   /(_))(_))
-         )\___ _((_)\ _ )\ _((_)/(_))_((_)  (_()((_) ((_|_))_  _(_))(_))_
-        ((/ __| || (_)_\(_) \| |/ __| __| |  \/  |/ _ \|   \  |_ _||   (_)
-         | (__| __ |/ _ \ | .` | (_ | _|  | |\/| | (_) | |) |  | | | |) |
-          \___|_||_/_/ \_\|_|\_|\___|___| |_|  |_|\___/|___/  |___||___(_)
-      */
-      
+
         setModID("SiruMod");
-        // cool
-        // TODO: NOW READ THIS!!!!!!!!!!!!!!!:
-        
-        // 1. Go to your resources folder in the project panel, and refactor> rename theDefaultResources to
-        // yourModIDResources.
-        
-        // 2. Click on the localization > eng folder and press ctrl+shift+r, then select "Directory" (rather than in Project) and press alt+c (or mark the match case option)
-        // replace all instances of theDefault with yourModID, and all instances of thedefault with yourmodid (the same but all lowercase).
-        // Because your mod ID isn't the default. Your cards (and everything else) should have Your mod id. Not mine.
-        // It's important that the mod ID prefix for keywords used in the cards descriptions is lowercase!
 
-        // 3. Scroll down (or search for "ADD CARDS") till you reach the ADD CARDS section, and follow the TODO instructions
-
-        // 4. FINALLY and most importantly: Scroll up a bit. You may have noticed the image locations above don't use getModID()
-        // Change their locations to reflect your actual ID rather than theDefault. They get loaded before getID is a thing.
-        
-        logger.info("Done subscribing");
-        
-        logger.info("Done creating the color");
-        
-        
         logger.info("Adding mod settings");
         // This loads the mod settings.
         // The actual mod Button is added below in receivePostInitialize()
@@ -273,16 +141,6 @@ public class DefaultMod implements
         logger.info("========================= /Default Mod Initialized. Hello World./ =========================");
     }
     
-    // ============== /SUBSCRIBE, CREATE THE COLOR_GRAY, INITIALIZE/ =================
-    
-    
-    // =============== LOAD THE CHARACTER =================
-    
-    // =============== /LOAD THE CHARACTER/ =================
-    
-    
-    // =============== POST-INITIALIZE =================
-    
     @Override
     public void receivePostInitialize() {
         logger.info("Loading badge image and mod options");
@@ -316,47 +174,10 @@ public class DefaultMod implements
         
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
 
-        
-        // =============== EVENTS =================
-        // https://github.com/daviscook477/BaseMod/wiki/Custom-Events
-
-        // You can add the event like so:
-        // BaseMod.addEvent(IdentityCrisisEvent.ID, IdentityCrisisEvent.class, TheCity.ID);
-        // Then, this event will be exclusive to the City (act 2), and will show up for all characters.
-        // If you want an event that's present at any part of the game, simply don't include the dungeon ID
-
-        // If you want to have more specific event spawning (e.g. character-specific or so)
-        // deffo take a look at that basemod wiki link as well, as it explains things very in-depth
-        // btw if you don't provide event type, normal is assumed by default
-
-        // Create a new event builder
-        // Since this is a builder these method calls (outside of create()) can be skipped/added as necessary
-
-        // Add the event
-
         // =============== /EVENTS/ =================
         logger.info("Done loading badge Image and mod options");
     }
-    
-    // =============== / POST-INITIALIZE/ =================
-    
-    // ================ ADD POTIONS ===================
-    
-    public void receiveEditPotions() {
-        logger.info("Beginning to edit potions");
-        
-        // Class Specific Potion. If you want your potion to not be class-specific,
-        // just remove the player class at the end (in this case the "TheDefaultEnum.THE_DEFAULT".
-        // Remember, you can press ctrl+P inside parentheses like addPotions)
-        
-        logger.info("Done editing potions");
-    }
-    
-    // ================ /ADD POTIONS/ ===================
-    
-    
-    // ================ ADD RELICS ===================
-    
+
     @Override
     public void receiveEditRelics() {
         logger.info("Adding relics");
@@ -366,33 +187,16 @@ public class DefaultMod implements
         logger.info("Done adding relics!");
     }
     
-    // ================ /ADD RELICS/ ===================
-    
-    
-    // ================ ADD CARDS ===================
 
-    
-    // ================ /ADD CARDS/ ===================
-    
-    
-    // ================ LOAD THE TEXT ===================
-    
     @Override
     public void receiveEditStrings() {
         logger.info("You seeing this?");
         logger.info("Beginning to edit strings for mod with ID: " + getModID());
-        loadCustomStringsFile(RelicStrings.class, "SiruModResources/localization/eng/SiruMod-Relic-Strings.json");
+
+        BaseMod.loadCustomStringsFile(RelicStrings.class, "SiruModResources/localization/eng/SiruMod-Relic-Strings.json");
         logger.info("Done edittting strings");
     }
-    
-    // ================ /LOAD THE TEXT/ ===================
-    
-    // ================ LOAD THE KEYWORDS ===================
-    
-    // ================ /LOAD THE KEYWORDS/ ===================    
-    
-    // this adds "ModName:" before the ID of any card/relic/power etc.
-    // in order to avoid conflicts if any other mod uses the same ID.
+
 
     public static String makeID(String idText) {
         return getModID() + ":" + idText;
@@ -400,11 +204,6 @@ public class DefaultMod implements
 
     @Override
     public void receivePostDungeonInitialize() {
-        if (TipTracker.relicCounter < 20) {
-            if (!(Boolean)TipTracker.tips.get("RELIC_TIP")) {
-                TipTracker.neverShowAgain("RELIC_TIP");
-            }
-        }
 
         RelicLibrary.getRelic(SiruBasicRelic.ID).makeCopy().instantObtain();
     }
