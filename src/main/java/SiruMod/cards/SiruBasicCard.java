@@ -1,12 +1,17 @@
 package SiruMod.cards;
 
 import SiruMod.DefaultMod;
-import SiruMod.util.TextureLoader;
 import basemod.abstracts.CustomCard;
-import com.badlogic.gdx.graphics.Texture;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
+
+import java.util.Iterator;
 
 public class SiruBasicCard extends CustomCard {
 
@@ -25,11 +30,27 @@ public class SiruBasicCard extends CustomCard {
     @Override
     public void initializeDescription() {
         super.initializeDescription();
-        keywords.add("SiruMod:SiruBasicCard tooltip");
     }
 
     @Override
     public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
+        Iterator<AbstractCard> handsit = AbstractDungeon.player.hand.group.iterator();
+
+        while(handsit.hasNext()) {
+            AbstractCard c = (AbstractCard)handsit.next();
+            if(c.cardID == "SiruBasicCard") { continue; }
+            //this.addToTop(new NewQueueCardAction(c, AbstractDungeon.getCurrRoom().monsters.getRandomMonster(), false, true));
+            AbstractDungeon.actionManager.addCardQueueItem(new CardQueueItem(c,true, EnergyPanel.getCurrentEnergy(), true, true), true);
+        }
+
+        AbstractDungeon.actionManager.addCardQueueItem(new CardQueueItem(CardLibrary.getCard(SiruBattleEnd.ID), true, EnergyPanel.getCurrentEnergy(), true, true), false);
 
     }
+
+    @Override
+    public AbstractCard makeCopy() {
+        return new SiruBasicCard();
+    }
+
+
 }

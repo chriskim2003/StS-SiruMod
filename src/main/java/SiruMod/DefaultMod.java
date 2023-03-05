@@ -1,48 +1,33 @@
 package SiruMod;
 
 import SiruMod.cards.SiruBasicCard;
+import SiruMod.cards.SiruBattleEnd;
 import SiruMod.relics.SiruBasicRelic;
-import basemod.*;
-import basemod.AutoAdd.Seen;
-import basemod.abstracts.CustomRelic;
-import basemod.devcommands.relic.RelicList;
+import SiruMod.util.IDCheckDontTouchPls;
+import SiruMod.util.TextureLoader;
+import basemod.BaseMod;
+import basemod.ModLabeledToggleButton;
+import basemod.ModPanel;
 import basemod.helpers.RelicType;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
-import com.evacipated.cardcrawl.mod.stslib.Keyword;
-import com.evacipated.cardcrawl.mod.stslib.RelicTools;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.CardGroup;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.RelicLibrary;
-import com.megacrit.cardcrawl.helpers.TipTracker;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.RelicStrings;
-import com.megacrit.cardcrawl.neow.NeowEvent;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
-import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import SiruMod.util.IDCheckDontTouchPls;
-import SiruMod.util.TextureLoader;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.Properties;
-
-import static basemod.BaseMod.loadCustomStringsFile;
 
 
 @SpireInitializer
@@ -192,7 +177,9 @@ public class DefaultMod implements
 
     @Override
     public void receiveEditCards() {
+
         BaseMod.addCard(new SiruBasicCard());
+        BaseMod.addCard(new SiruBattleEnd());
     }
     
 
