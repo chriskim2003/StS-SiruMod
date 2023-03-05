@@ -1,5 +1,6 @@
 package SiruMod;
 
+import SiruMod.cards.SiruBasicCard;
 import SiruMod.relics.SiruBasicRelic;
 import basemod.*;
 import basemod.AutoAdd.Seen;
@@ -25,6 +26,7 @@ import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.RelicLibrary;
 import com.megacrit.cardcrawl.helpers.TipTracker;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.neow.NeowEvent;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
@@ -47,6 +49,7 @@ import static basemod.BaseMod.loadCustomStringsFile;
 public class DefaultMod implements
         EditRelicsSubscriber,
         EditStringsSubscriber,
+        EditCardsSubscriber,
         PostDungeonInitializeSubscriber,
         PostInitializeSubscriber {
 
@@ -186,6 +189,11 @@ public class DefaultMod implements
 
         logger.info("Done adding relics!");
     }
+
+    @Override
+    public void receiveEditCards() {
+        BaseMod.addCard(new SiruBasicCard());
+    }
     
 
     @Override
@@ -194,6 +202,7 @@ public class DefaultMod implements
         logger.info("Beginning to edit strings for mod with ID: " + getModID());
 
         BaseMod.loadCustomStringsFile(RelicStrings.class, "SiruModResources/localization/eng/SiruMod-Relic-Strings.json");
+        BaseMod.loadCustomStringsFile(CardStrings.class, "SiruModResources/localization/eng/SiruMod-Card-Strings.json");
         logger.info("Done edittting strings");
     }
 
@@ -207,4 +216,6 @@ public class DefaultMod implements
 
         RelicLibrary.getRelic(SiruBasicRelic.ID).makeCopy().instantObtain();
     }
+
+
 }
