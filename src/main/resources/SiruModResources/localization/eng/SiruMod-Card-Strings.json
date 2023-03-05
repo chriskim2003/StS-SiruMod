@@ -1,6 +1,10 @@
 {
   "SiruMod:SiruBasicCard": {
     "NAME": "유기",
-    "DESCRIPTION": "모든 카드를 사용하고 런칩니다."
+    "DESCRIPTION": "모든 카드를 사용하고 런칩니다. 보스에게선 도망갈수 없습니다."
+  },
+  "SiruMod:SiruBattleEnd": {
+    "NAME": "잘있어라~",
+    "DESCRIPTION": "난 갈란다~"
   }
 }

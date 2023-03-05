@@ -4,6 +4,7 @@ import SiruMod.DefaultMod;
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -12,14 +13,37 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.combat.SmokeBombEffect;
 
+import java.util.Iterator;
+
 public class SiruBattleEnd extends CustomCard {
 
     public static final String ID = DefaultMod.makeID("SiruBattleEnd");
 
     public SiruBattleEnd() {
-        super(ID, CardCrawlGame.languagePack.getCardStrings(ID).NAME, "SiruModResources/images/cards/Skill.png", 3, CardCrawlGame.languagePack.getCardStrings(ID).DESCRIPTION, CardType.SKILL, CardColor.COLORLESS, CardRarity.SPECIAL, CardTarget.NONE);
+        super(ID, CardCrawlGame.languagePack.getCardStrings(ID).NAME, "SiruModResources/images/cards/Skill.png", -2, CardCrawlGame.languagePack.getCardStrings(ID).DESCRIPTION, CardType.SKILL, CardColor.COLORLESS, CardRarity.SPECIAL, CardTarget.NONE);
+        this.exhaust = true;
+    }
+
+    @Override
+    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
+        Iterator var1 = AbstractDungeon.getCurrRoom().monsters.monsters.iterator();
+
+        do {
+            if (!var1.hasNext()) {
+                return true;
+            }
+
+            m = (AbstractMonster) var1.next();
+            if (m.hasPower("BackAttack")) {
+                return false;
+            }
+        } while (m.type != AbstractMonster.EnemyType.BOSS);
+
+        return false;
 
     }
+
+
     @Override
     public void upgrade() {
 
@@ -47,5 +71,10 @@ public class SiruBattleEnd extends CustomCard {
             }
             this.isDone = true;
         }
+    }
+
+    @Override
+    public AbstractCard makeCopy() {
+        return new SiruBattleEnd();
     }
 }

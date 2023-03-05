@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
 import java.util.Iterator;
@@ -20,11 +21,14 @@ public class SiruBasicCard extends CustomCard {
     //유기 카드
     //손에 있는 모든 카드를 사용하고 전투를 끝냄
     public SiruBasicCard() {
-        super(ID, CardCrawlGame.languagePack.getCardStrings(ID).NAME, "SiruModResources/images/cards/Skill.png", 3, CardCrawlGame.languagePack.getCardStrings(ID).DESCRIPTION, CardType.POWER, CardColor.COLORLESS, CardRarity.SPECIAL, CardTarget.SELF);
+        super(ID, CardCrawlGame.languagePack.getCardStrings(ID).NAME, "SiruModResources/images/cards/Skill.png", 3, CardCrawlGame.languagePack.getCardStrings(ID).DESCRIPTION, CardType.POWER, CardColor.COLORLESS, CardRarity.RARE, CardTarget.SELF);
     }
     @Override
     public void upgrade() {
-
+        if(!this.upgraded) {
+            this.upgradeName();
+            this.upgradeBaseCost(2);
+        }
     }
 
     @Override
