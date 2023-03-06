@@ -12,7 +12,11 @@
     "DESCRIPTION": "도발을 걸거나, 궁을 쓰거나, 무스를 씁니다."
   },
   "SiruMod:SiruAlexAggro": {
-    "NAME": "도발",
+    "NAME": "교란",
     "DESCRIPTION": "25 방어를 얻습니다."
+  },
+  "SiruMod:SiruAlexUlt": {
+    "NAME": "정밀 폭격",
+    "DESCRIPTION": "모든 적에게 전격을 1개 영창시킵니다."
   }
 }

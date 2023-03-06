@@ -1,8 +1,10 @@
 package SiruMod;
 
 import SiruMod.cards.SiruAlexCard;
+import SiruMod.cards.SiruAlexUlt;
 import SiruMod.cards.SiruBasicCard;
 import SiruMod.cards.SiruBattleEnd;
+import SiruMod.powers.AlexUltPow;
 import SiruMod.relics.SiruBasicRelic;
 import SiruMod.util.IDCheckDontTouchPls;
 import SiruMod.util.TextureLoader;
@@ -21,6 +23,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.RelicLibrary;
 import com.megacrit.cardcrawl.localization.CardStrings;
+import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -163,6 +166,10 @@ public class DefaultMod implements
         
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
 
+
+
+        BaseMod.addPower(AlexUltPow.class, AlexUltPow.POW_ID);
+
         // =============== /EVENTS/ =================
         logger.info("Done loading badge Image and mod options");
     }
@@ -182,6 +189,7 @@ public class DefaultMod implements
         BaseMod.addCard(new SiruBasicCard());
         BaseMod.addCard(new SiruBattleEnd());
         BaseMod.addCard(new SiruAlexCard());
+        BaseMod.addCard(new SiruAlexUlt());
     }
     
 
@@ -192,6 +200,7 @@ public class DefaultMod implements
 
         BaseMod.loadCustomStringsFile(RelicStrings.class, "SiruModResources/localization/eng/SiruMod-Relic-Strings.json");
         BaseMod.loadCustomStringsFile(CardStrings.class, "SiruModResources/localization/eng/SiruMod-Card-Strings.json");
+        BaseMod.loadCustomStringsFile(PowerStrings.class, "SiruModResources/localization/eng/SiruMod-Power-Strings.json");
         logger.info("Done edittting strings");
     }
 

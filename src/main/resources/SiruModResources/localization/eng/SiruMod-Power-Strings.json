@@ -1,10 +1,6 @@
 {
-"theDefault:CommonPower": {
-        "NAME": "Placeholder Power",
-        "DESCRIPTIONS": ["You applied #b", " keyword.", " keywords."]
-},
-"theDefault:RarePower": {
-        "NAME": "Placeholder Power",
-        "DESCRIPTIONS": ["At the start of your turn, TOUCH #b", " enemy." , " enemies."]
-}
+        "SiruMod:AlexUltPow": {
+                "NAME": "전격",
+                "DESCRIPTIONS": ["전격 1당 3의 고정 데미지를 받습니다."]
+        }
 }

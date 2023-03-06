@@ -44,7 +44,7 @@ public class SiruAlexCard extends CustomCard {
     public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
         ArrayList<AbstractCard> stanceChoices = new ArrayList();
         stanceChoices.add(new SiruAlexAggro());
-        stanceChoices.add(new FameAndFortune());
+        stanceChoices.add(new SiruAlexUlt());
         stanceChoices.add(new LiveForever());
         if (this.upgraded) {
             Iterator var4 = stanceChoices.iterator();
