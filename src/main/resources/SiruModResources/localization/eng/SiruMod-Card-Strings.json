@@ -6,5 +6,13 @@
   "SiruMod:SiruBattleEnd": {
     "NAME": "잘있어라~",
     "DESCRIPTION": "난 갈란다~"
+  },
+  "SiruMod:SiruAlexCard": {
+    "NAME": "알렉스",
+    "DESCRIPTION": "도발을 걸거나, 궁을 쓰거나, 무스를 씁니다."
+  },
+  "SiruMod:SiruAlexAggro": {
+    "NAME": "도발",
+    "DESCRIPTION": "25 방어를 얻습니다."
   }
 }

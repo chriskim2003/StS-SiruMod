@@ -1,5 +1,6 @@
 package SiruMod;
 
+import SiruMod.cards.SiruAlexCard;
 import SiruMod.cards.SiruBasicCard;
 import SiruMod.cards.SiruBattleEnd;
 import SiruMod.relics.SiruBasicRelic;
@@ -180,6 +181,7 @@ public class DefaultMod implements
 
         BaseMod.addCard(new SiruBasicCard());
         BaseMod.addCard(new SiruBattleEnd());
+        BaseMod.addCard(new SiruAlexCard());
     }
     
 

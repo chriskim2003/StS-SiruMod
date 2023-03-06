@@ -21,7 +21,6 @@ public class SiruBattleEnd extends CustomCard {
 
     public SiruBattleEnd() {
         super(ID, CardCrawlGame.languagePack.getCardStrings(ID).NAME, "SiruModResources/images/cards/Skill.png", -2, CardCrawlGame.languagePack.getCardStrings(ID).DESCRIPTION, CardType.SKILL, CardColor.COLORLESS, CardRarity.SPECIAL, CardTarget.NONE);
-        this.exhaust = true;
     }
 
     @Override
