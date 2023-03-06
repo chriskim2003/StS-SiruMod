@@ -18,5 +18,9 @@
   "SiruMod:SiruAlexUlt": {
     "NAME": "정밀 폭격",
     "DESCRIPTION": "모든 적에게 전격을 1개 영창시킵니다."
+  },
+  "SiruMod:SiruAlexWPS": {
+    "NAME": "빗겨흘리기",
+    "DESCRIPTION": "공격을 1회 막습니다."
   }
 }

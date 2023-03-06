@@ -1,9 +1,6 @@
 package SiruMod;
 
-import SiruMod.cards.SiruAlexCard;
-import SiruMod.cards.SiruAlexUlt;
-import SiruMod.cards.SiruBasicCard;
-import SiruMod.cards.SiruBattleEnd;
+import SiruMod.cards.*;
 import SiruMod.powers.AlexUltPow;
 import SiruMod.relics.SiruBasicRelic;
 import SiruMod.util.IDCheckDontTouchPls;
@@ -190,6 +187,7 @@ public class DefaultMod implements
         BaseMod.addCard(new SiruBattleEnd());
         BaseMod.addCard(new SiruAlexCard());
         BaseMod.addCard(new SiruAlexUlt());
+        BaseMod.addCard(new SiruAlexWPS());
     }
     
 

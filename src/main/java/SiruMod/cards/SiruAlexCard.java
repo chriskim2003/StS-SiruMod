@@ -45,7 +45,7 @@ public class SiruAlexCard extends CustomCard {
         ArrayList<AbstractCard> stanceChoices = new ArrayList();
         stanceChoices.add(new SiruAlexAggro());
         stanceChoices.add(new SiruAlexUlt());
-        stanceChoices.add(new LiveForever());
+        stanceChoices.add(new SiruAlexWPS());
         if (this.upgraded) {
             Iterator var4 = stanceChoices.iterator();
 
