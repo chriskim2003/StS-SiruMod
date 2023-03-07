@@ -3,6 +3,7 @@ package SiruMod;
 import SiruMod.cards.*;
 import SiruMod.powers.AlexUltPow;
 import SiruMod.relics.SiruBasicRelic;
+import SiruMod.relics.SiruBossVodka;
 import SiruMod.util.IDCheckDontTouchPls;
 import SiruMod.util.TextureLoader;
 import basemod.BaseMod;
@@ -176,6 +177,7 @@ public class DefaultMod implements
         logger.info("Adding relics");
 
         BaseMod.addRelic(new SiruBasicRelic(), RelicType.SHARED);
+        BaseMod.addRelic(new SiruBossVodka(), RelicType.SHARED);
 
         logger.info("Done adding relics!");
     }
