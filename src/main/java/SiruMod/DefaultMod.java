@@ -2,8 +2,10 @@ package SiruMod;
 
 import SiruMod.cards.*;
 import SiruMod.powers.AlexUltPow;
+import SiruMod.powers.SJ6DebuffPow;
 import SiruMod.relics.SiruBasicRelic;
 import SiruMod.relics.SiruBossVodka;
+import SiruMod.relics.SiruRareSJ6;
 import SiruMod.util.IDCheckDontTouchPls;
 import SiruMod.util.TextureLoader;
 import basemod.BaseMod;
@@ -167,6 +169,7 @@ public class DefaultMod implements
 
 
         BaseMod.addPower(AlexUltPow.class, AlexUltPow.POW_ID);
+        BaseMod.addPower(SJ6DebuffPow.class, SJ6DebuffPow.POW_ID);
 
         // =============== /EVENTS/ =================
         logger.info("Done loading badge Image and mod options");
@@ -178,6 +181,7 @@ public class DefaultMod implements
 
         BaseMod.addRelic(new SiruBasicRelic(), RelicType.SHARED);
         BaseMod.addRelic(new SiruBossVodka(), RelicType.SHARED);
+        BaseMod.addRelic(new SiruRareSJ6(), RelicType.SHARED);
 
         logger.info("Done adding relics!");
     }
@@ -190,6 +194,7 @@ public class DefaultMod implements
         BaseMod.addCard(new SiruAlexCard());
         BaseMod.addCard(new SiruAlexUlt());
         BaseMod.addCard(new SiruAlexWPS());
+        BaseMod.addCard(new SiruThrowCard());
     }
     
 

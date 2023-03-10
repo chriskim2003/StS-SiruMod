@@ -22,5 +22,9 @@
   "SiruMod:SiruAlexWPS": {
     "NAME": "빗겨흘리기",
     "DESCRIPTION": "공격을 1회 막습니다."
+  },
+  "SiruMod:SiruThrowCard": {
+    "NAME": "던지기",
+    "DESCRIPTION": "던집니다."
   }
 }

@@ -12,5 +12,12 @@
     "DESCRIPTIONS": [
       "13% 확률로 피해를 #b2배 입거나 #b1/2배 입습니다."
     ]
+  },
+  "SiruMod:SiruRareSJ6": {
+    "NAME": "SJ6 주사기",
+    "FLAVOR": "리조트런의 필수품",
+    "DESCRIPTIONS": [
+      "2턴동안 민첩을 7얻고 이후 12 떨어집니다."
+    ]
   }
 }

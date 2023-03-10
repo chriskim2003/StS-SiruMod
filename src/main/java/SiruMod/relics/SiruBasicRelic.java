@@ -4,9 +4,12 @@ import SiruMod.DefaultMod;
 import SiruMod.util.TextureLoader;
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
+import com.megacrit.cardcrawl.actions.common.DiscardAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.colorless.Madness;
 import com.megacrit.cardcrawl.cards.status.Dazed;
+import com.megacrit.cardcrawl.cards.status.VoidCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
@@ -30,7 +33,7 @@ public class SiruBasicRelic extends CustomRelic {
 
     @Override
     public void onPlayerEndTurn() {
-        AbstractDungeon.player.discardPile.addToBottom(CardLibrary.getCard(Dazed.ID));
+        this.addToBot(new MakeTempCardInDiscardAction(new Dazed(), 1));
     }
 
     @Override
