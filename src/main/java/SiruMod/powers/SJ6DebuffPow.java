@@ -5,9 +5,12 @@ import SiruMod.util.TextureLoader;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 
@@ -27,7 +30,7 @@ public class SJ6DebuffPow extends AbstractPower implements CloneablePowerInterfa
         this.amount = amount;
         this.priority = 10;
         isTurnBased = true;
-        canGoNegative = false;
+        canGoNegative = true;
         this.type = PowerType.BUFF;
 
         this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
@@ -36,9 +39,17 @@ public class SJ6DebuffPow extends AbstractPower implements CloneablePowerInterfa
         this.updateDescription();
     }
 
-    public void atStartOfTurnPostDraw() {
-        if(amount <= 0) {
-            this.addToBot(new ReducePowerAction(owner, source, new DexterityPower(owner, 1), 12));
+    public void updateDescription() {
+        this.description = CardCrawlGame.languagePack.getPowerStrings(POW_ID).DESCRIPTIONS[0];
+        this.type = PowerType.BUFF;
+    }
+
+    public void atStartOfTurn() {
+        if(amount > 1) {
+            this.addToBot(new ApplyPowerAction(owner, source, new SJ6DebuffPow(owner, source, -1), -1));
+        } else {
+            this.addToBot(new RemoveSpecificPowerAction(owner, source, POW_ID));
+            this.addToBot(new ApplyPowerAction(owner, source, new DexterityPower(owner, -1), -12));
         }
     }
 

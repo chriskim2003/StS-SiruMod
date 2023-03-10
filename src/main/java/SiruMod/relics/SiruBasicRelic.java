@@ -20,7 +20,7 @@ public class SiruBasicRelic extends CustomRelic {
 
     private static final Texture IMG = TextureLoader.getTexture("SiruModResources/images/relics/SiruBasic_Relic.png");
     public SiruBasicRelic() {
-        super(ID, IMG, RelicTier.SPECIAL, LandingSound.SOLID);
+        super(ID, IMG, RelicTier.RARE, LandingSound.SOLID);
     }
 
     @Override
